@@ -21,7 +21,7 @@ desde una única pantalla, actualizándose automáticamente cada 15 segundos sin
 
 ## 🚀 Features
 
-- Actualización automática cada **15 segundos** sin recarga de página
+- Actualización automática
 
 - Indicadores visuales por severidad: `critical`, `warning`, `info`, `elec`
 
