@@ -1,0 +1,187 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at top left, #ffffff 0, #f4f5f7 40%, #e6e9f0 100%);
+    color: #1f2933;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Layout principal de secciones */
+.dashboard,
+.dashICR,
+.dashFacOnline,
+.dashFacElec {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    padding: 16px 32px;
+    max-width: 1440px;
+    margin: 0 auto 8px;
+}
+
+/* Acerca la fila de Factura Electrónica al resto para que se vea más simétrico */
+.dashFacElec {
+    padding-top: 0px;
+}
+
+/* Tarjetas */
+.card {
+    background: #ffffff;
+    padding: 18px 20px 16px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    position: relative;
+    overflow: hidden;
+    transition: transform 160ms ease-out, box-shadow 160ms ease-out;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(239, 68, 68, 0.06), rgba(59, 130, 246, 0.04));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.error-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #111827;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.error-list,
+.error-listICR2 {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.error-list li,
+.error-listICR2 li {
+    padding: 9px 12px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid transparent;
+    transition: transform 120ms ease-out, box-shadow 120ms ease-out, border-color 120ms ease-out;
+}
+
+.error-list li:last-child,
+.error-listICR2 li:last-child {
+    margin-bottom: 0;
+}
+
+.error-list li:hover,
+.error-listICR2 li:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+/* Estados */
+.critical {
+    background-color: #fee2e2;
+    border-color: #fecaca;
+    color: #b91c1c;
+}
+
+.warning {
+    background-color: #fef3c7;
+    border-color: #fde68a;
+    color: #92400e;
+}
+
+.info {
+    background-color: #dbeafe;
+    border-color: #bfdbfe;
+    color: #1d4ed8;
+}
+
+.cred {
+    background-color: #e5e7eb;
+    border-color: #d1d5db;
+    color: #111827;
+}
+
+.elec {
+    background-color: #e5e7eb;
+    border-color: #d1d5db;
+    color: #111827;
+}
+
+/* Encabezado: logo + hora */
+.horaLogo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px 8px;
+}
+
+.logo {
+    width: 280px;
+    max-width: 100%;
+    height: auto;
+    margin-right: auto;
+    padding: 0;
+    display: inline-block;
+}
+
+.logoInd {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.clock {
+    font-size: 2.4rem;
+    font-weight: 700;
+    background: #ffffff;
+    padding: 16px 24px;
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+    color: #111827;
+    min-width: 200px;
+    text-align: center;
+}
+
+/* Utilidad para ocultar tarjetas sin eliminarlas del HTML */
+.card--hidden {
+    display: none !important;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .horaLogo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .clock {
+        align-self: stretch;
+    }
+}
